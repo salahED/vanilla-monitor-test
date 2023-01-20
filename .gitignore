@@ -1,0 +1,8 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+.babelrc
+webpack.config.js
+node_modules
