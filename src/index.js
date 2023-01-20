@@ -1,7 +1,4 @@
-import { fetchCall } from "./main";
+import "./styles.css";
+import { main } from "./main";
 
-fetchCall();
-
-export const a = "test";
-
-console.log(a);
+main();

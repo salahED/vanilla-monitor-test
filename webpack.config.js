@@ -10,7 +10,6 @@ const IS_DEV = process.env.NODE_ENV === "dev ";
 let config = {
   mode: "development",
   entry: "./src/index.js",
-  target: "web",
   devServer: {
     watchFiles: ["src/**/*"],
     hot: true,
@@ -30,7 +29,7 @@ let config = {
     new MiniCssExtractPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: "public", to: "" }, //to the dist root directory
+        { from: "assets", to: "" }, //to the dist root directory
       ],
     }),
   ],
