@@ -1,7 +1,6 @@
-import { fetchCall } from "./main";
+// import { fetchCall } from "./main";
+import "./styles.css";
+const { main } = require("./main");
 
-fetchCall();
-
-export const a = "test";
-
-console.log(a);
+// fetchCall();
+main();

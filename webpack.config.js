@@ -30,7 +30,7 @@ let config = {
     new MiniCssExtractPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: "public", to: "" }, //to the dist root directory
+        { from: "assets", to: "" }, //to the dist root directory
       ],
     }),
   ],
@@ -43,7 +43,10 @@ let config = {
       },
       {
         test: /\.css$/i,
-        use: [IS_DEV ? "style-loader" : MiniCssExtractPlugin.loader, "css-loader"],
+        use: [
+          IS_DEV ? "style-loader" : MiniCssExtractPlugin.loader,
+          "css-loader",
+        ],
       },
     ],
   },
