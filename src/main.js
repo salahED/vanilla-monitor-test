@@ -1,5 +1,6 @@
+import "./styles.css";
 export const fetchCall = async () => {
-  const res = await fetch("http://localhost:5500/data/datas.json");
+  const res = await fetch("http://localhost:8080/datas.json");
   const jsonRes = await res.json();
   const filter = jsonRes.filter((data) => data.age > 31);
   console.log("datas", filter);

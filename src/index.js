@@ -1,5 +1,4 @@
 import { fetchCall } from "./main";
-import "../style.css";
 
 fetchCall();
 
