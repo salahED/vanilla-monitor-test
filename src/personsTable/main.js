@@ -1,7 +1,7 @@
 import "./tableStyles.css";
 import { PersonsService } from "./PersonsService";
 import { TableRenderer } from "./TableRenderer";
-import { handleError } from "./handleError";
+import { handleError } from "../handleError";
 
 const personService = new PersonsService();
 const renderer = new TableRenderer();

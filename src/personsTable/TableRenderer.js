@@ -1,11 +1,12 @@
 export class TableRenderer {
   /**
-   *
+   *  l'id html de la table
    */
   tableId = "tableContainer";
 
   /**
-   *
+   * columnName : le nom de la colonne dans notre fichier datas
+   * label : le nom de la colonne dans la table html
    */
   columns = [
     { label: "Nom", columnName: "name.last" },
@@ -33,23 +34,40 @@ export class TableRenderer {
         .map(
           (person) => `
           <tr>
-            ${this.columns.map((col) => `<td>${this.resolveFieldValue(col.columnName, person)}</td>`).join("\n")}
+            ${this.columns
+              .map(
+                (col) =>
+                  `<td>${this.resolveFieldValue(col.columnName, person)}</td>`
+              )
+              .join("\n")}
           </tr>`
         )
         .join("\n")}
       </tbody>
     </table>
     `;
+
     return builtHtml;
   }
 
   /**
    *
-   * @param {*} path
-   * @param {*} obj
-   * @param {*} separator
-   * @returns
+   * @param {string} path
+   * @param {PersonDataObject} obj
+   * @param {string} separator
+   * @returns                       retourn un string
+   *
+   * @example
+   * const userObj = {
+   *  user: {
+   *   name: "salah",
+   *  },
+   * };
+   * // x userObj[user.name] x
+   * const name = this.resolveFieldValue("user.name", userObj, ".");
+   * console.log(name); //salah
    */
+
   resolveFieldValue(path, obj, separator = ".") {
     const properties = path.split(separator);
     return properties.reduce((prev, curr) => prev?.[curr], obj);

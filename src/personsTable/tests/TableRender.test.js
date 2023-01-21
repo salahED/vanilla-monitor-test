@@ -3,55 +3,55 @@ import { TableRenderer } from "../TableRenderer";
 const personsTableRenderer = new TableRenderer();
 
 describe("test", () => {
+  const testData = [
+    {
+      age: 38,
+      eyeColor: "blue",
+      name: {
+        first: "Henson",
+        last: "Jacobson",
+      },
+      company: "DELPHIDE",
+      email: "henson.jacobson@delphide.org",
+      address: "130 Brighton Court, Barrelville, Arkansas, 2523",
+    },
+    {
+      age: 37,
+      eyeColor: "brown",
+      name: {
+        first: "Naomi",
+        last: "Puckett",
+      },
+      company: "ROUGHIES",
+      email: "naomi.puckett@roughies.name",
+      address: "973 Cleveland Street, Bend, Alabama, 147",
+    },
+    {
+      age: 35,
+      eyeColor: "blue",
+      name: {
+        first: "Phyllis",
+        last: "Hester",
+      },
+      company: "GLOBOIL",
+      email: "phyllis.hester@globoil.us",
+
+      address: "276 Preston Court, Fairacres, Missouri, 2664",
+    },
+    {
+      age: 31,
+      eyeColor: "blue",
+      name: {
+        first: "Kristina",
+        last: "Nelson",
+      },
+      company: "GLOBOIL",
+      email: "phyllis.hester@globoil.us",
+
+      address: "276 Preston Court, Fairacres, Missouri, 2664",
+    },
+  ];
   it("should build html correctly", () => {
-    const testData = [
-      {
-        age: 38,
-        eyeColor: "blue",
-        name: {
-          first: "Henson",
-          last: "Jacobson",
-        },
-        company: "DELPHIDE",
-        email: "henson.jacobson@delphide.org",
-        address: "130 Brighton Court, Barrelville, Arkansas, 2523",
-      },
-      {
-        age: 37,
-        eyeColor: "brown",
-        name: {
-          first: "Naomi",
-          last: "Puckett",
-        },
-        company: "ROUGHIES",
-        email: "naomi.puckett@roughies.name",
-        address: "973 Cleveland Street, Bend, Alabama, 147",
-      },
-      {
-        age: 35,
-        eyeColor: "blue",
-        name: {
-          first: "Phyllis",
-          last: "Hester",
-        },
-        company: "GLOBOIL",
-        email: "phyllis.hester@globoil.us",
-
-        address: "276 Preston Court, Fairacres, Missouri, 2664",
-      },
-      {
-        age: 31,
-        eyeColor: "blue",
-        name: {
-          first: "Kristina",
-          last: "Nelson",
-        },
-        company: "GLOBOIL",
-        email: "phyllis.hester@globoil.us",
-
-        address: "276 Preston Court, Fairacres, Missouri, 2664",
-      },
-    ];
     const expectedTableHtml = `
     <table>
       <thead>
@@ -107,6 +107,29 @@ describe("test", () => {
       </tbody>
     </table>
     `;
-    expect(personsTableRenderer.getTableHtml(testData)).toEqual(expectedTableHtml);
+    expect(personsTableRenderer.getTableHtml(testData)).toEqual(
+      expectedTableHtml
+    );
+  });
+
+  it("should return the lastname", () => {
+    expect(
+      personsTableRenderer.resolveFieldValue("name.first", testData[0])
+    ).toBe("Henson");
+  });
+
+  it("should return the name object", () => {
+    expect(personsTableRenderer.resolveFieldValue("name", testData[0])).toEqual(
+      {
+        first: "Henson",
+        last: "Jacobson",
+      }
+    );
+  });
+
+  it("should return undefined", () => {
+    expect(personsTableRenderer.resolveFieldValue("", testData[0])).toEqual(
+      undefined
+    );
   });
 });

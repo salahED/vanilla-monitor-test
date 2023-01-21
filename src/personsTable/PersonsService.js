@@ -43,7 +43,7 @@ export class PersonsService {
 
   /**
    *
-   * @param {*} age La tranche d'age xx-xx
+   * @param {string} age La tranche d'age xx-xx
    * @returns       Si la tranche d'age est de bon format alors return TRUE
    *                Sinon la fonction THROW une erreur
    */
@@ -80,7 +80,7 @@ export class PersonsService {
 
   /**
    *
-   * @param {*} eyeColor La couleur des yeux
+   * @param {string} eyeColor La couleur des yeux
    * @returns            Si la couleur des yeux est brown, blue ou green alors return true
    *                     Sinon THROW error
    */
@@ -94,11 +94,13 @@ export class PersonsService {
 
   /**
    *
-   * @param {*} age La tranche d'age
+   * @param {string} age La tranche d'age
    * @returns       Returner un objet { startAgeRange, endAgeRange }
    */
   getAgeRangeFromString(age) {
-    const [startAgeRange, endAgeRange] = (age || "").split("-").map((i) => parseInt(i));
+    const [startAgeRange, endAgeRange] = (age || "")
+      .split("-")
+      .map((i) => parseInt(i));
     return { startAgeRange, endAgeRange };
   }
 
@@ -116,13 +118,19 @@ export class PersonsService {
       return data;
     }
 
-    const { startAgeRange, endAgeRange } = this.getAgeRangeFromString(query.age);
+    const { startAgeRange, endAgeRange } = this.getAgeRangeFromString(
+      query.age
+    );
     return data.filter((el) => {
       /**
        * Filtrer par age et par couleur des yeux
        */
       if (shouldFilterByAge && shouldFilterByEyeColor) {
-        return el.eyeColor === query.eyeColor && el.age <= endAgeRange && el.age >= startAgeRange;
+        return (
+          el.eyeColor === query.eyeColor &&
+          el.age <= endAgeRange &&
+          el.age >= startAgeRange
+        );
       }
       /**
        * Filtrer par tranche d'age
@@ -132,7 +140,7 @@ export class PersonsService {
       }
 
       /**
-       * Filtrer p couleur des yeux
+       * Filtrer par couleur des yeux
        */
       if (!shouldFilterByAge && shouldFilterByEyeColor) {
         return el.eyeColor === query.eyeColor;

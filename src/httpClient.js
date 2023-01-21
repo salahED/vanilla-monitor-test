@@ -1,8 +1,9 @@
 class HttpClient {
+  // # pour dire que c'est methode privé
   async #fetch(url, options = {}) {
     const response = await fetch(url, options);
     if (!response.ok) {
-      throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+      throw new Error(`HTTP Error `);
     }
     return response.json();
   }

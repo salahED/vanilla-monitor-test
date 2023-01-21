@@ -3,28 +3,35 @@ import { httpClient } from "../../httpClient";
 import { personServiceErrors, PersonsService } from "../PersonsService";
 const service = new PersonsService();
 
-describe("PersonsService tests", () => {
-  /**
-   * Tests de la fonction validateAge
-   */
+describe("validateAge test", () => {
   it("should throw error when passing wrong string", () => {
-    expect(() => service.validateAge("aaaa")).toThrow(personServiceErrors.QUERY_AGE_INVALID_INPUT);
+    expect(() => service.validateAge("aaaa")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_INPUT
+    );
   });
 
   it("should throw error when passing string-number", () => {
-    expect(() => service.validateAge("aa-22")).toThrow(personServiceErrors.QUERY_AGE_INVALID_INPUT);
+    expect(() => service.validateAge("aa-22")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_INPUT
+    );
   });
 
   it("should throw error when passing number-string", () => {
-    expect(() => service.validateAge("20-aa")).toThrow(personServiceErrors.QUERY_AGE_INVALID_INPUT);
+    expect(() => service.validateAge("20-aa")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_INPUT
+    );
   });
 
   it("should throw error  when passing number-number and range is not 5", () => {
-    expect(() => service.validateAge("20-23")).toThrow(personServiceErrors.QUERY_AGE_INVALID_RANGE);
+    expect(() => service.validateAge("20-23")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_RANGE
+    );
   });
 
   it("should throw error when passing number-number and range is not 5", () => {
-    expect(() => service.validateAge("20-28")).toThrow(personServiceErrors.QUERY_AGE_INVALID_RANGE);
+    expect(() => service.validateAge("20-28")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_RANGE
+    );
   });
 
   it("should throw error when passing number-number and range is 5", () => {
@@ -32,39 +39,40 @@ describe("PersonsService tests", () => {
   });
 
   it("should throw error when passing start range <20", () => {
-    expect(() => service.validateAge("15-20")).toThrow(personServiceErrors.QUERY_AGE_INVALID_MIN_MAX_AGE);
+    expect(() => service.validateAge("15-20")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_MIN_MAX_AGE
+    );
   });
 
   it("should throw error when passing start range range >40", () => {
-    expect(() => service.validateAge("40-45")).toThrow(personServiceErrors.QUERY_AGE_INVALID_MIN_MAX_AGE);
+    expect(() => service.validateAge("40-45")).toThrow(
+      personServiceErrors.QUERY_AGE_INVALID_MIN_MAX_AGE
+    );
   });
+});
 
-  /**
-   * Tests de la fonction getAgeRangeFromString
-   */
+describe("getAgeRangeFromString test", () => {
   it("should return a valid object", () => {
     expect(service.getAgeRangeFromString("20-25")).toEqual({
       startAgeRange: 20,
       endAgeRange: 25,
     });
   });
+});
 
-  /**
-   * Tests de la fonction validateEyeColor
-   */
-
+describe("validateEyeColor tests", () => {
   it("should throw error if eyeColor is not : brown, blue or green", () => {
-    expect(() => service.validateEyeColor("test")).toThrow(personServiceErrors.QUERY_EYECOLOR_INVALID_VALUE);
+    expect(() => service.validateEyeColor("test")).toThrow(
+      personServiceErrors.QUERY_EYECOLOR_INVALID_VALUE
+    );
   });
 
   it("should work if eyeColor is green", () => {
     expect(service.validateEyeColor("green")).toBeTruthy();
   });
+});
 
-  /**
-   * Tests de la fonction filterData
-   */
-
+describe("filterData tests", () => {
   const testData = [
     {
       age: 38,
@@ -141,7 +149,9 @@ describe("PersonsService tests", () => {
         name: { first: "Kristina", last: "Nelson" },
       },
     ];
-    expect(service.filterData(testData, { eyeColor: "blue" })).toEqual(peopleWithBlueEyeColor);
+    expect(service.filterData(testData, { eyeColor: "blue" })).toEqual(
+      peopleWithBlueEyeColor
+    );
   });
 
   it("should return only persons that are between 35 and 40", () => {
@@ -177,7 +187,9 @@ describe("PersonsService tests", () => {
   });
 
   it("should return only persons that are between 35 and 40 and have blue eyes", () => {
-    expect(service.filterData(testData, { age: "35-40", eyeColor: "blue" })).toEqual([
+    expect(
+      service.filterData(testData, { age: "35-40", eyeColor: "blue" })
+    ).toEqual([
       {
         address: "130 Brighton Court, Barrelville, Arkansas, 2523",
         age: 38,
@@ -196,12 +208,10 @@ describe("PersonsService tests", () => {
       },
     ]);
   });
+});
 
-  /**
-   * Test de la fonction fetch
-   */
-
-  it("fetch lunch the fetch call", async () => {
+describe("fetchData tests", () => {
+  it("should call the fetch with the right path", async () => {
     const getSpy = jest.spyOn(httpClient, "get");
     await service.fetchData({});
     expect(getSpy).toHaveBeenCalledWith("/datas.json");
