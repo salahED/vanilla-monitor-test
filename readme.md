@@ -8,15 +8,15 @@ Pour tester l'application en ligne : [cliquer ici](https://vanilla-monitor-test-
 
 -> pour filtrer par couleur des yeux, vous rajouter dans l'URL : ?eyeColor=couleur
 
-- par exemple [https://vanilla-monitor-test-s4qs.vercel.app?eyeColor=blue](https://vanilla-monitor-test-s4qs.vercel.app?eyeColor=blue) va afficher uniquement les personne ayant couleur des yeux blue
+- par exemple [https://monsite.app?eyeColor=blue](https://vanilla-monitor-test-s4qs.vercel.app?eyeColor=blue) va afficher uniquement les personne ayant couleur des yeux blue
 
 -> pour filtrer par tranche d'age vous rajouter dans l'URL : ?age=xx-xx
 
-- par exemple [https://vanilla-monitor-test-s4qs.vercel.app?age=20-25](https://vanilla-monitor-test-s4qs.vercel.app?age=20-25) va afficher uniquement les personne ayant l'age entre 20 et 25 ans
+- par exemple [https://monsite.app?age=20-25](https://vanilla-monitor-test-s4qs.vercel.app?age=20-25) va afficher uniquement les personne ayant l'age entre 20 et 25 ans
 
 -> pour filtrer par tranche d'age et par couleur des yeux vous rajouter dans l'URL : ?age=xx-xx&eyeColor=couleur ou ?eyeColor=couleur&age=xx-xx
 
-- par exemple [https://vanilla-monitor-test-s4qs.vercel.app?age=20-25&eyeColor=brown](https://vanilla-monitor-test-s4qs.vercel.app?age=20-25&eyeColor=brown) va afficher uniquement les personne ayant l'age entre 20 et 25 ans et couleur des yeux brown
+- par exemple [https://monsite.app?age=20-25&eyeColor=brown](https://vanilla-monitor-test-s4qs.vercel.app?age=20-25&eyeColor=brown) va afficher uniquement les personne ayant l'age entre 20 et 25 ans et couleur des yeux brown
 
 ## Installation
 
