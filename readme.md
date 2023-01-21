@@ -81,7 +81,7 @@ import { main } from "./personsTable/main";
 main();
 ```
 
-2- la fonction main() construit la requête query en récupérant les query params de l'URL puis elle fait appelle au service personService pour respirer les données puis elle appelle le service TableRender pour afficher la table, dans le cas d'une erreur elle appele le service handleError pour afficher l'erreur.
+2- la fonction main() construit la requête query en récupérant les query params de l'URL puis elle fait appelle au service personService pour recupérer les données puis elle appelle le service TableRender pour afficher la table, dans le cas d'une erreur elle appele le service handleError pour afficher l'erreur.
 
 ```javascript
 try {
@@ -102,7 +102,7 @@ try {
   }
 ```
 
-4- le service TableRender va utiliser les données récupérer pour construire le tableau
+4- le service TableRender va utiliser les données récupérer pour construire le tableau et l'afficher dans la page web
 
 ```javascript
  render(data) {
