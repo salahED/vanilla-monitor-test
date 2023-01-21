@@ -5,6 +5,7 @@ Persons data monitor est une application web développer avec HTML, CSS, Javasci
 ## Comment ça marche
 
 Pour tester l'application en ligne : [cliquer ici](https://vanilla-monitor-test-s4qs.vercel.app/)
+
 -> pour filtrer par couleur des yeux, vous rajouter dans l'URL : ?eyeColor=couleur
 
 - par exemple [https://vanilla-monitor-test-s4qs.vercel.app?eyeColor=blue](https://vanilla-monitor-test-s4qs.vercel.app?eyeColor=blue) va afficher uniquement les personne ayant couleur des yeux blue
