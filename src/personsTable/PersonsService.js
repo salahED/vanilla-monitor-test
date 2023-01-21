@@ -1,3 +1,5 @@
+import { httpClient } from "../httpClient";
+
 export class PersonsService {
   /**
    *
@@ -12,7 +14,7 @@ export class PersonsService {
      */
     this.validateQuery(query);
 
-    const fetchedData = await (await fetch("/datas.json")).json();
+    const fetchedData = await httpClient.get("/datas.json");
 
     /**
      * filterData permet de filtrer la donnée soit par tranche d'age, couleur
@@ -82,7 +84,6 @@ export class PersonsService {
    * @returns            Si la couleur des yeux est brown, blue ou green alors return true
    *                     Sinon THROW error
    */
-
   validateEyeColor(eyeColor) {
     const validColors = ["brown", "blue", "green"];
     if (!validColors.includes(eyeColor)) {
@@ -97,16 +98,13 @@ export class PersonsService {
    * @returns       Returner un objet { startAgeRange, endAgeRange }
    */
   getAgeRangeFromString(age) {
-    const [startAgeRange, endAgeRange] = (age || "")
-      .split("-")
-      .map((i) => parseInt(i));
+    const [startAgeRange, endAgeRange] = (age || "").split("-").map((i) => parseInt(i));
     return { startAgeRange, endAgeRange };
   }
 
   /**
    * @param {query} query L'objet de la requete qui permet de filtrer la donnée {age, eyeColor}
    */
-
   filterData(data, query) {
     const shouldFilterByAge = "age" in query;
     const shouldFilterByEyeColor = "eyeColor" in query;
@@ -118,19 +116,13 @@ export class PersonsService {
       return data;
     }
 
-    const { startAgeRange, endAgeRange } = this.getAgeRangeFromString(
-      query.age
-    );
+    const { startAgeRange, endAgeRange } = this.getAgeRangeFromString(query.age);
     return data.filter((el) => {
       /**
        * Filtrer par age et par couleur des yeux
        */
       if (shouldFilterByAge && shouldFilterByEyeColor) {
-        return (
-          el.eyeColor === query.eyeColor &&
-          el.age <= endAgeRange &&
-          el.age >= startAgeRange
-        );
+        return el.eyeColor === query.eyeColor && el.age <= endAgeRange && el.age >= startAgeRange;
       }
       /**
        * Filtrer par tranche d'age
@@ -153,11 +145,8 @@ export class PersonsService {
  *  L'objet de la liste des erreurs possible
  */
 export const personServiceErrors = {
-  QUERY_AGE_INVALID_INPUT: "Veuillez ecrire un interval d'age, ex : 20-25",
-  QUERY_AGE_INVALID_RANGE:
-    "Veuillez ecrire un interval d'age de 5 ans, ex: 20-25, 30-35 ...",
-  QUERY_AGE_INVALID_MIN_MAX_AGE:
-    "Veuillez entrer une tranche d'age qui soit entre 20 et 40 ans ",
-  QUERY_EYECOLOR_INVALID_VALUE:
-    "La couleur des yeux que vous avez entrer est incorrect",
+  QUERY_AGE_INVALID_INPUT: "QUERY_AGE_INVALID_INPUT",
+  QUERY_AGE_INVALID_RANGE: "QUERY_AGE_INVALID_RANGE",
+  QUERY_AGE_INVALID_MIN_MAX_AGE: "QUERY_AGE_INVALID_MIN_MAX_AGE",
+  QUERY_EYECOLOR_INVALID_VALUE: "QUERY_EYECOLOR_INVALID_VALUE",
 };

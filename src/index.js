@@ -1,4 +1,4 @@
-import "./styles.css";
-import { main } from "./main";
+import "./global.css";
+import { main } from "./personsTable/main";
 
 main();

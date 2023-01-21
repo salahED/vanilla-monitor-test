@@ -1,9 +1,9 @@
-import { PersonsTableRenderer } from "../services/PersonsTableRenderer";
+import { TableRenderer } from "../TableRenderer";
 
-const personsTableRenderer = new PersonsTableRenderer();
+const personsTableRenderer = new TableRenderer();
 
 describe("test", () => {
-  test("is the html loaded correctly", () => {
+  it("should build html correctly", () => {
     const testData = [
       {
         age: 38,
@@ -107,8 +107,6 @@ describe("test", () => {
       </tbody>
     </table>
     `;
-    expect(personsTableRenderer.getTableHtml(testData)).toEqual(
-      expectedTableHtml
-    );
+    expect(personsTableRenderer.getTableHtml(testData)).toEqual(expectedTableHtml);
   });
 });

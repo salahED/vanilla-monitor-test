@@ -1,6 +1,13 @@
-export class PersonsTableRenderer {
-  #tableId = "tableContainer";
-  #columns = [
+export class TableRenderer {
+  /**
+   *
+   */
+  tableId = "tableContainer";
+
+  /**
+   *
+   */
+  columns = [
     { label: "Nom", columnName: "name.last" },
     { label: "Prénom", columnName: "name.first" },
     { label: "Âge", columnName: "age" },
@@ -12,26 +19,21 @@ export class PersonsTableRenderer {
 
   /**
    *
-   * @param {*} data La donnée finale apres le filtre
-   * @returns        Un string qui contient la construction de notre tableau
+   * @param {TableData} data les données des personnes à afficher
+   * @returns {string} string html qui contient l'html du tableau
    */
   getTableHtml(data) {
     const builtHtml = `
     <table>
       <thead>
-        ${this.#columns.map((column) => `<th>${column.label}</th>`).join("\n")}
+        ${this.columns.map((column) => `<th>${column.label}</th>`).join("\n")}
       </thead>
       <tbody>
       ${data
         .map(
           (person) => `
           <tr>
-            ${this.#columns
-              .map(
-                (col) =>
-                  `<td>${this.resolveFieldValue(col.columnName, person)}</td>`
-              )
-              .join("\n")}
+            ${this.columns.map((col) => `<td>${this.resolveFieldValue(col.columnName, person)}</td>`).join("\n")}
           </tr>`
         )
         .join("\n")}
@@ -54,9 +56,9 @@ export class PersonsTableRenderer {
   }
   /**
    *
-   * @param {*} data La donnée qui va etre afficher apres le filtre
+   * @param {*} data La donnée qui va être afficher
    */
   render(data) {
-    document.getElementById(this.#tableId).innerHTML = this.getTableHtml(data);
+    document.getElementById(this.tableId).innerHTML = this.getTableHtml(data);
   }
 }
