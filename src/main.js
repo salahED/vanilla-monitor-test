@@ -33,6 +33,7 @@ export const main = async () => {
     /**
      * En cas d'erreur, afficher l'erreur
      */
-    document.getElementById("erreurMessage").innerHTML = errorMessage;
+    document.getElementById("errorContainer").style.display = "flex";
+    document.getElementById("errorMessage").innerHTML = errorMessage;
   }
 };

@@ -12,9 +12,7 @@ export class PersonsService {
      */
     this.validateQuery(query);
 
-    const fetchedData = await (
-      await fetch("http://localhost:8080/datas.json")
-    ).json();
+    const fetchedData = await (await fetch("/datas.json")).json();
 
     /**
      * filterData permet de filtrer la donnée soit par tranche d'age, couleur

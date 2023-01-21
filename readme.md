@@ -20,7 +20,7 @@ pour builder le projet :
 npm run build
 ```
 
-Pour lancer en mode développement :
+Pour tester le fonctionnement du code en mode développement :
 
 ```
 npm run dev

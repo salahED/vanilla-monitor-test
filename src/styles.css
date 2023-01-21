@@ -44,8 +44,9 @@ table th {
   justify-content: center;
   flex-wrap: wrap;
   height: 100%;
+  display:none
 }
-#erreurMessage{
+#errorMessage{
   padding: 5%;
     border-radius: 20px;
     color: white;
