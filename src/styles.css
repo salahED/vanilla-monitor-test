@@ -1,8 +1,54 @@
-
-
-#dropdown-list {
-  visibility: hidden;
+body{
+  height:98vh;
 }
-#hover-div:hover #dropdown-list {
-  visibility: visible;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 gray;
+  font-family: "Ubuntu";
+}
+
+table td,
+table th {
+  margin:auto;
+  padding: 8px;
+  border: solid 1px lightgray;
+}
+
+
+table tr:nth-child(even) {
+  background-color: #eee3;
+}
+
+table tr:hover {
+  background-color: lightgray;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: start;
+  color: white;
+  background-color: dodgerblue;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+
+#errorContainer{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
+#erreurMessage{
+  padding: 5%;
+    border-radius: 20px;
+    color: white;
+    font-size: 22px;
+    background: crimson;
 }

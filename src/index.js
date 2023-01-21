@@ -1,6 +1,4 @@
-// import { fetchCall } from "./main";
 import "./styles.css";
-const { main } = require("./main");
+import { main } from "./main";
 
-// fetchCall();
 main();
