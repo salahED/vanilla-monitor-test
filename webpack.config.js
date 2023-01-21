@@ -13,7 +13,7 @@ let config = {
   devServer: {
     watchFiles: ["src/**/*"],
     hot: true, //pour faire auto refresh en cas de changement dans l'un des fichier dans src
-    open: true, // pour ouvrir une nouvelle fenetre automatiquement l'or du premeier lancement
+    open: true, // pour ouvrir le navigateur sur l'application l'or du premeier lancement
     port: 8080, //le port par defaut
   },
   output: {
@@ -29,21 +29,26 @@ let config = {
     new MiniCssExtractPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: "assets", to: "" }, // copier le contenu du fichier assets au fichier dist
+        { from: "assets", to: "" }, // copier le contenu du dossier assets dans le dossier de sortie (dist)
       ],
     }),
   ],
+  // les règles définies pour chaque type de module importer dans js
   module: {
     rules: [
+      // règle des modules js
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: ["babel-loader"],
+        exclude: /(node_modules|bower_components)/, // ignorer les modules qui proviennet des packages extérieurs
+        use: ["babel-loader"], // utiliser https://github.com/babel/babel-loader pour la transpilation du js
       },
+      // règle des modules css
       {
         test: /\.css$/i,
+        // style-loader s'execute uniquement dans le mode dev car il est plus rapide
+        // En prod MiniCssExtractPlugin car c'est mieux de séparer le css du js
         use: [
-          IS_DEV ? "style-loader" : MiniCssExtractPlugin.loader, // style-loader s'execute uniquement dans le mode dev car il est plus rapide
+          IS_DEV ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
         ],
       },
@@ -54,6 +59,7 @@ let config = {
     minimizer: [],
   },
 };
+// En prod optimiser la taille des fichiers en sortie
 if (!IS_DEV) {
   config.optimization.minimizer.push(new TerserPlugin());
 }
