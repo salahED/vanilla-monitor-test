@@ -49,28 +49,30 @@ npm run test
 
 ## Organisation des fichiers
 
+```
 racine
-|**\_assets
-|\_\_\_**datas.json
-|**\_src
-|**\_\***\*mocks**
-|\_\_\_**personsTable
-|\_**\_tests
-|\_\_**PersonsService.test.js
-|\_**\_TableRendrer.test.js
-|\_\_**main.js
-|\_**\_PersonsService.js
-|\_\_**TableRendrer.js
-|**\_**global.css
-|**\_**handleError.js
-|**\_**httpClient.js
-|**\_**index.html
-|**\_\*\*index.js
+|___assets
+    |_____datas.json
+|___src
+    |_______mocks__
+    |_____personsTable
+          |____tests
+               |____PersonsService.test.js
+               |____TableRendrer.test.js
+          |____main.js
+          |____PersonsService.js
+          |____TableRendrer.js
+    |_____global.css
+    |_____handleError.js
+    |_____httpClient.js
+    |_____index.html
+    |_____index.js
 |...configFiles
+```
 
 ## Séquencement d'execution du code
 
-1- index.js fait appele à la fonction main()
+1- index.js fait appele a la fonction main()
 
 ```javascript
 import { main } from "./personsTable/main";
@@ -78,7 +80,7 @@ import { main } from "./personsTable/main";
 main();
 ```
 
-2- la fonction main() construit la requête query en recupirant les query params de l'URL puis elle fait appele au service PersonService pour respirer les données puis elle appele le service TableRender pour afficher la table, dans le cas d'une erreur elle appelle le service handleError pour afficher l'erreur.s
+2- la fonction main() construit la requete query en recupirant les query params de l'URL puis elle fait appele au service personService pour recupirer les données puis elle appele le service TableRender pour afficher la table, dans le cas d'une erreur elle appele le serice handleError pour afficher l'erreur.
 
 ```javascript
 try {
@@ -89,7 +91,7 @@ try {
 }
 ```
 
-3- le service personservice est responsable de la validation de la requête, la récupération des données en utilisant le service httpClient et le filtre de donnée
+3- le service personService est responsable de la validation de la requete, la recupération des données en utilisant le service httpClient et le filtre de données
 
 ```javascript
   async fetchData(query) {
@@ -99,7 +101,7 @@ try {
   }
 ```
 
-4- le service TableRender va utiliser les données recupérés pour construire le tableau
+4- le service TableRender va utiliser la données pour construire le tableau
 
 ```javascript
  render(data) {
