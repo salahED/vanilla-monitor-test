@@ -1,6 +1,6 @@
-# Person's data monitor
+# Persons data monitor
 
-Person's data monitor est une application web développer avec HTML, CSS, Javascirpt ES6, qui permet au utilisateur de visualiser un tableau de personne ou de le filtrer par tranche d'age ou par couleur des yeux.
+Persons data monitor est une application web développer avec HTML, CSS, Javascirpt ES6, qui permet au utilisateur de visualiser un tableau de personne ou de le filtrer par tranche d'age ou par couleur des yeux.
 
 ## Installation
 
