@@ -155,7 +155,7 @@ describe("filterData tests", () => {
   });
 
   it("should return only persons that are between 35 and 40", () => {
-    expect(service.filterData(testData, { age: "35-40" })).toEqual([
+    const peopleThatAreBetween35and40 = [
       {
         address: "130 Brighton Court, Barrelville, Arkansas, 2523",
         age: 38,
@@ -183,13 +183,14 @@ describe("filterData tests", () => {
         eyeColor: "blue",
         name: { first: "Phyllis", last: "Hester" },
       },
-    ]);
+    ];
+    expect(service.filterData(testData, { age: "35-40" })).toEqual(
+      peopleThatAreBetween35and40
+    );
   });
 
   it("should return only persons that are between 35 and 40 and have blue eyes", () => {
-    expect(
-      service.filterData(testData, { age: "35-40", eyeColor: "blue" })
-    ).toEqual([
+    const peopleWithBlueEyeAndAge35to40 = [
       {
         address: "130 Brighton Court, Barrelville, Arkansas, 2523",
         age: 38,
@@ -206,7 +207,10 @@ describe("filterData tests", () => {
         eyeColor: "blue",
         name: { first: "Phyllis", last: "Hester" },
       },
-    ]);
+    ];
+    expect(
+      service.filterData(testData, { age: "35-40", eyeColor: "blue" })
+    ).toEqual(peopleWithBlueEyeAndAge35to40);
   });
 });
 
