@@ -114,5 +114,5 @@ try {
 
 Webpack permet de regrouper plusieurs fichiers JavaScript en un seul fichier, appelé "bundle". Il permet également de gérer les dépendances du projet, de transpiler le code en utilisant des outils tels que Babel et de générer des fichiers de production optimisés pour une meilleure performance. En utilisant webpack,on peut également utiliser des fonctionnalités avancées comme les modules ECMAScript, les imports et exports, et les outils de développement en direct pour améliorer votre workflow de développement.
 
-le fichier config de ce projet ainsi que ça documentation est déja dans le fichier ```webpack.config.js```
+le fichier config de ce projet ainsi que sa documentation est déja dans le fichier ```webpack.config.js```
 
