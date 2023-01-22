@@ -109,19 +109,20 @@ describe("TableRenderer test", () => {
     `;
     expect(personsTableRenderer.getTableHtml(testData)).toEqual(expectedTableHtml);
   });
-
-  it("should return the lastname", () => {
-    expect(personsTableRenderer.resolveFieldValue("name.first", testData[0])).toBe("Henson");
-  });
-
-  it("should return the name object", () => {
-    expect(personsTableRenderer.resolveFieldValue("name", testData[0])).toEqual({
-      first: "Henson",
-      last: "Jacobson",
+  describe("resolveFieldValue test", () => {
+    it("should return the lastname", () => {
+      expect(personsTableRenderer.resolveFieldValue("name.first", testData[0])).toBe("Henson");
     });
-  });
 
-  it("should return undefined", () => {
-    expect(personsTableRenderer.resolveFieldValue("", testData[0])).toEqual(undefined);
+    it("should return the name object", () => {
+      expect(personsTableRenderer.resolveFieldValue("name", testData[0])).toEqual({
+        first: "Henson",
+        last: "Jacobson",
+      });
+    });
+
+    it("should return undefined", () => {
+      expect(personsTableRenderer.resolveFieldValue("", testData[0])).toEqual(undefined);
+    });
   });
 });
