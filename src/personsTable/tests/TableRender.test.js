@@ -2,7 +2,7 @@ import { TableRenderer } from "../TableRenderer";
 
 const personsTableRenderer = new TableRenderer();
 
-describe("test", () => {
+describe("TableRenderer test", () => {
   const testData = [
     {
       age: 38,
@@ -107,29 +107,21 @@ describe("test", () => {
       </tbody>
     </table>
     `;
-    expect(personsTableRenderer.getTableHtml(testData)).toEqual(
-      expectedTableHtml
-    );
+    expect(personsTableRenderer.getTableHtml(testData)).toEqual(expectedTableHtml);
   });
 
   it("should return the lastname", () => {
-    expect(
-      personsTableRenderer.resolveFieldValue("name.first", testData[0])
-    ).toBe("Henson");
+    expect(personsTableRenderer.resolveFieldValue("name.first", testData[0])).toBe("Henson");
   });
 
   it("should return the name object", () => {
-    expect(personsTableRenderer.resolveFieldValue("name", testData[0])).toEqual(
-      {
-        first: "Henson",
-        last: "Jacobson",
-      }
-    );
+    expect(personsTableRenderer.resolveFieldValue("name", testData[0])).toEqual({
+      first: "Henson",
+      last: "Jacobson",
+    });
   });
 
   it("should return undefined", () => {
-    expect(personsTableRenderer.resolveFieldValue("", testData[0])).toEqual(
-      undefined
-    );
+    expect(personsTableRenderer.resolveFieldValue("", testData[0])).toEqual(undefined);
   });
 });
